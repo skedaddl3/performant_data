@@ -1,8 +1,8 @@
 ## Content
 
-This repository contains Section 13 of Dart & Flutter Course: Reactive Programming with Dart
+This repository contains Section 18 of Dart & Flutter Course: Performant Data Fetching
 
-#### Section 13
+#### Section 18
 - Streams Take and Where
 - Validation  with Streams
 - Email Validation
