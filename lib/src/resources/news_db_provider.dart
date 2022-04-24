@@ -49,6 +49,7 @@ class NewsDbProvider implements Source {
       where: "id = ?",
       whereArgs: [id],
     );
+
     if (maps.length > 0) {
       return ItemModel.fromDb(maps.first);
     }
