@@ -3,6 +3,7 @@
 This repository contains Section 18 - 21 of Dart & Flutter Course: Performant Data Fetching, Testing with Flutter and Dart, & Offline Data Storage.
 
 #### Section 18
+
 - Hacker News API
 - Creating ItemModel Class
 - Item Model Properties
@@ -10,6 +11,7 @@ This repository contains Section 18 - 21 of Dart & Flutter Course: Performant Da
 - Fetching Individual Items
 
 #### Section 19
+
 - Testing with Dart
 - Imports
 - Writing Expectations
@@ -18,6 +20,7 @@ This repository contains Section 18 - 21 of Dart & Flutter Course: Performant Da
 - Testing FetchItem
 
 #### Section 20
+
 - SQLite Db Provider
 - Database Imports
 - Async Instructors
@@ -33,6 +36,7 @@ This repository contains Section 18 - 21 of Dart & Flutter Course: Performant Da
 - Casting Lists
 
 #### Section 21
+
 - Abstract Classes
 - Repository Interface Design
 - Defining Source

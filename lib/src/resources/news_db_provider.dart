@@ -6,8 +6,12 @@ import 'dart:async';
 import '../models/item_model.dart';
 import 'repository.dart';
 
-class NewsDbProvider implements Source {
+class NewsDbProvider implements Source, Cache {
   late Database db;
+
+  NewsDbProvider() {
+    init();
+  }
 
   @override
   // deprecated, should use nullable
@@ -60,3 +64,5 @@ class NewsDbProvider implements Source {
     return db.insert("Items", item.toMap());
   }
 }
+
+final newsDbProvider = NewsDbProvider();
