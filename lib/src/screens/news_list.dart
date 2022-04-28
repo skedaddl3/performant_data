@@ -6,6 +6,8 @@ class NewsList extends StatelessWidget {
   Widget build(context) {
     final bloc = StoriesProvider.of(context);
 
+    bloc.fetchTopIds();
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Top News'),
@@ -17,7 +19,7 @@ class NewsList extends StatelessWidget {
   Widget buildList(StoriesBloc bloc) {
     return StreamBuilder(
         stream: bloc.topIds,
-        builder: (context, snapshot) {
+        builder: (context, AsyncSnapshot<List<int>> snapshot) {
           if (!snapshot.hasData) {
             return Text('Still waiting on Ids');
           }
@@ -25,32 +27,11 @@ class NewsList extends StatelessWidget {
           return ListView.builder(
               itemCount: snapshot.data.length,
               itemBuilder: (context, int index) {
-                return Text(snapshot.data[index]);
+                return Text('${snapshot.data[index]}');
               });
         });
   }
 
-  Widget buildList() {
-    return ListView.builder(
-        itemCount: 1000,
-        itemBuilder: (context, int index) {
-          return FutureBuilder(
-              future: getFuture(),
-              builder: (context, snapshot) {
-                return Container(
-                  height: 80.0,
-                  child: snapshot.hasData
-                      ? Text('Im visible $index')
-                      : Text('Havent fetched data $index'),
-                );
-              });
-        });
-  }
 
-  getFuture() {
-    return Future.delayed(
-      Duration(seconds: 2),
-      () => 2,
-    );
-  }
+
 }
