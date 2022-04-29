@@ -3,6 +3,7 @@ import 'package:performant_data/src/blocs/stories_bloc.dart';
 import '../blocs/stories_provider.dart';
 
 class NewsList extends StatelessWidget {
+  @override
   Widget build(context) {
     final bloc = StoriesProvider.of(context);
 
@@ -10,7 +11,7 @@ class NewsList extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Top News'),
+        title: const Text('Top News'),
       ),
       body: buildList(bloc),
     );
@@ -21,19 +22,16 @@ class NewsList extends StatelessWidget {
         stream: bloc.topIds,
         builder: (context, AsyncSnapshot<List<int>> snapshot) {
           if (!snapshot.hasData) {
-            return Center(
-              child: CircularProgressIndicator(),
+            return const Center(
+              child: const CircularProgressIndicator(),
             );
           }
 
           return ListView.builder(
-              itemCount: snapshot.data.length,
+              itemCount: snapshot.data?.length,
               itemBuilder: (context, int index) {
-                return Text('${snapshot.data[index]}');
+                return Text('${snapshot.data![index]}');
               });
         });
   }
-
-
-
 }
