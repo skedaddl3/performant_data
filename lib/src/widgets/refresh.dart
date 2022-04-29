@@ -4,8 +4,10 @@ import '../blocs/stories_provider.dart';
 class Refresh extends StatelessWidget {
   final Widget child;
 
+  // ignore: use_key_in_widget_constructors
   const Refresh({required this.child});
 
+  @override
   Widget build(context) {
     final bloc = StoriesProvider.of(context);
 

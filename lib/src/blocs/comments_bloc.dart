@@ -8,8 +8,8 @@ class CommentsBloc {
   final _commentsFetcher = PublishSubject<int>();
   final _commentsOutput = BehaviorSubject<Map<int, Future<ItemModel?>>>();
 
-  // Streams
-  ValueStream<Map<int, Future<ItemModel?>>> get itemWithComments =>
+  // Streams - Observable is deprecated
+  Stream<Map<int, Future<ItemModel?>>> get itemWithComments =>
       _commentsOutput.stream;
 
   // Sink
@@ -26,7 +26,7 @@ class CommentsBloc {
       (cache, int id, index) {
         cache[id] = _repository.fetchItem(id);
         cache[id]!.then((ItemModel? item) {
-          item?.kids!.forEach((kidId) => fetchItemWithComments(kidId));
+          item?.kids.forEach((kidId) => fetchItemWithComments(kidId));
         });
 
         return cache;

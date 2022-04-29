@@ -48,10 +48,10 @@ class NewsDetail extends StatelessWidget {
   Widget buildList(ItemModel? item, Map<int, Future<ItemModel?>>? itemMap) {
     final children = <Widget>[];
     children.add(buildTitle(item!));
-    final commentsList = item.kids?.map((kidId) {
+    final commentsList = item.kids.map((kidId) {
       return Comment(itemId: kidId, itemMap: itemMap, depth: 0);
     }).toList();
-    children.addAll(commentsList!);
+    children.addAll(commentsList);
 
     return ListView(
       children: children,
@@ -63,7 +63,7 @@ class NewsDetail extends StatelessWidget {
       margin: const EdgeInsets.all(10.0),
       alignment: Alignment.topCenter,
       child: Text(
-        item?.title ?? '',
+        item!.title,
         textAlign: TextAlign.center,
         style: const TextStyle(
           fontSize: 20.0,

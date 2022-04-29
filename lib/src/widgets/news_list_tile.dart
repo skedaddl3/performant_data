@@ -9,6 +9,7 @@ class NewsListTile extends StatelessWidget {
 
   NewsListTile({required this.itemId});
 
+  @override
   Widget build(context) {
     final bloc = StoriesProvider.of(context);
 
@@ -40,16 +41,18 @@ class NewsListTile extends StatelessWidget {
           onTap: () {
             Navigator.pushNamed(context, '/${item.id}');
           },
-          title: Text(item.title!),
+          title: Text(item.title),
           subtitle: Text('${item.score} points'),
           trailing: Column(
             children: [
-              const Icon(Icons.comment),
+              // ignore: prefer_const_constructors
+              Icon(Icons.comment),
               Text('${item.descendants}'),
             ],
           ),
         ),
-        const Divider(
+        // ignore: prefer_const_constructors
+        Divider(
           height: 8.0,
         ),
       ],

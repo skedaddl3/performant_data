@@ -1,36 +1,35 @@
-import 'package:flutter/material.dart';
 import 'dart:convert';
 
 class ItemModel {
   // refactored, old code is not working from course variable needs to be marked as variable
-  late final int? id;
-  late final bool? deleted;
-  late final String? type;
-  late final String? by;
-  late final int? time;
-  late final String? text;
-  late final bool? dead;
-  late final int? parent;
-  late final List<dynamic>? kids;
-  late final String? url;
-  late final int? score;
-  late final String? title;
-  late final int? descendants;
+  final int id;
+  final bool deleted;
+  final String type;
+  final String by;
+  final int time;
+  final String text;
+  final bool dead;
+  final int parent;
+  final List<dynamic> kids;
+  final String url;
+  final int score;
+  final String title;
+  final int descendants;
 
   ItemModel.fromJson(Map<String, dynamic> parsedJson)
       : id = parsedJson['id'],
-        deleted = parsedJson['deleted'],
+        deleted = parsedJson['deleted'] ?? false,
         type = parsedJson['type'],
-        by = parsedJson['by'],
+        by = parsedJson['by'] ?? '',
         time = parsedJson['time'],
-        text = parsedJson['text'],
-        dead = parsedJson['dead'],
+        text = parsedJson['text'] ?? '',
+        dead = parsedJson['dead'] ?? false,
         parent = parsedJson['parent'],
-        kids = parsedJson['kids'],
+        kids = parsedJson['kids'] ?? [],
         url = parsedJson['url'],
         score = parsedJson['score'],
         title = parsedJson['title'],
-        descendants = parsedJson['descendants'];
+        descendants = parsedJson['descendants'] ?? 0;
 
   ItemModel.fromDb(Map<String, dynamic> parsedJson)
       : id = parsedJson['id'],
@@ -59,8 +58,8 @@ class ItemModel {
       "score": score,
       "title": title,
       "descendants": descendants,
-      "dead": dead! ? 1 : 0,
-      "deleted": deleted! ? 1 : 0,
+      "dead": dead ? 1 : 0,
+      "deleted": deleted ? 1 : 0,
       "kids": jsonEncode(kids),
     };
   }

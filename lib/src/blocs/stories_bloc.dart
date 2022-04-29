@@ -1,4 +1,4 @@
-import 'package:performant_data/src/resources/repository.dart';
+import 'dart:async';
 import 'package:rxdart/rxdart.dart';
 import '../models/item_model.dart';
 import '../resources/repository.dart';
@@ -9,8 +9,8 @@ class StoriesBloc {
   final _itemsOutput = BehaviorSubject<Map<int, Future<ItemModel?>>>();
   final _itemsFetcher = PublishSubject<int>();
 
-  late Stream<Map<int, Future<ItemModel?>>> items;
   Stream<List<int>> get topIds => _topIds.stream;
+  Stream<Map<int, Future<ItemModel?>>> get items => _itemsOutput.stream;
 
   Function(int) get fetchItem => _itemsFetcher.sink.add;
 

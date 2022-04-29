@@ -21,10 +21,12 @@ class NewsDbProvider implements Source, Cache {
 
   void init() async {
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
-    final path = join(documentsDirectory.path, "items.db");
-    db = await openDatabase(path, version: 1,
-        onCreate: (Database newDb, int version) {
-      newDb.execute("""
+    final path = join(documentsDirectory.path, "items4.db");
+    db = await openDatabase(
+      path,
+      version: 1,
+      onCreate: (Database newDb, int version) {
+        newDb.execute("""
           CREATE TABLE Items
             (
               id INTEGER PRIMARY KEY,
@@ -42,7 +44,8 @@ class NewsDbProvider implements Source, Cache {
               descendants INTEGER
             )
         """);
-    });
+      },
+    );
   }
 
   @override
@@ -54,7 +57,8 @@ class NewsDbProvider implements Source, Cache {
       whereArgs: [id],
     );
 
-    if (maps.length > 0) {
+    // initial code is = maps.length > 0
+    if (maps.isNotEmpty) {
       return ItemModel.fromDb(maps.first);
     }
     return null;
@@ -62,13 +66,16 @@ class NewsDbProvider implements Source, Cache {
 
   @override
   Future<int> addItem(ItemModel item) {
-    return db.insert("Items", item.toMap());
+    return db.insert(
+      "Items",
+      item.toMap(),
+      conflictAlgorithm: ConflictAlgorithm.ignore,
+    );
   }
 
   @override
   Future<int> clear() {
-    // TODO: implement clear
-    throw UnimplementedError();
+    return db.delete("Items");
   }
 }
 
