@@ -13,7 +13,7 @@ class NewsApiProvider implements Source {
   @override
   Future<List<int>> fetchTopIds() async {
     // refactored code was Uri.parse('$_root/topstories.json') using Uri.https
-    // initial code was Uri.get()
+    // initial code was .get()
     final response = await client.get(Uri.parse('$_root/topstories.json'));
     final ids = json.decode(response.body);
 

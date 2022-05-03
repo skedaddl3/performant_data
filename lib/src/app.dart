@@ -27,7 +27,7 @@ class App extends StatelessWidget {
 
           storiesBloc.fetchTopIds();
 
-          return NewsList();
+          return const NewsList();
         },
       );
     } else {

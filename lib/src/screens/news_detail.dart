@@ -7,7 +7,8 @@ import '../widgets/comment.dart';
 class NewsDetail extends StatelessWidget {
   final int itemId;
 
-  NewsDetail({required this.itemId});
+  // ignore: use_key_in_widget_constructors
+  const NewsDetail({required this.itemId});
 
   @override
   Widget build(context) {

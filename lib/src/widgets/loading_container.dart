@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-// ignore: use_key_in_widget_constructors
 class LoadingContainer extends StatelessWidget {
+  const LoadingContainer({Key? key}) : super(key: key);
+
   @override
   Widget build(context) {
     return Column(

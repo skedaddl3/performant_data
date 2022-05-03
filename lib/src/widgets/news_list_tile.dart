@@ -7,7 +7,7 @@ import 'loading_container.dart';
 class NewsListTile extends StatelessWidget {
   final int itemId;
 
-  NewsListTile({required this.itemId});
+  const NewsListTile({Key? key, required this.itemId}) : super(key: key);
 
   @override
   Widget build(context) {
@@ -17,14 +17,14 @@ class NewsListTile extends StatelessWidget {
       stream: bloc.items,
       builder: (context, AsyncSnapshot<Map<int, Future<ItemModel?>>> snapshot) {
         if (!snapshot.hasData) {
-          return LoadingContainer();
+          return const LoadingContainer();
         }
 
         return FutureBuilder(
           future: snapshot.data![itemId],
           builder: (context, AsyncSnapshot<ItemModel?> itemSnapshot) {
             if (!itemSnapshot.hasData) {
-              return LoadingContainer();
+              return const LoadingContainer();
             }
 
             return buildTile(context, itemSnapshot.data!);

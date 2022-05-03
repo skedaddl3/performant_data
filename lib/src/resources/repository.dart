@@ -19,6 +19,7 @@ class Repository {
 
   Future<ItemModel?> fetchItem(int id) async {
     ItemModel? item;
+    // ignore: prefer_typing_uninitialized_variables
     var source;
 
     for (source in sources) {

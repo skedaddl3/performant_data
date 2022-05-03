@@ -4,13 +4,15 @@ import '../widgets/news_list_tile.dart';
 import '../widgets/refresh.dart';
 
 class NewsList extends StatelessWidget {
+  const NewsList({Key? key}) : super(key: key);
+
   @override
   Widget build(context) {
     final bloc = StoriesProvider.of(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Top News - Test'),
+        title: const Text('Top News'),
       ),
       body: buildList(bloc),
     );
