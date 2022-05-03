@@ -42,3 +42,5 @@ This repository contains Section 18 - 21 of Dart & Flutter Course: Performant Da
 - Defining Source
 - Cache Definitions
 - Lists of Sources and Caches
+
+Run without sound null safety.
