@@ -1,3 +1,9 @@
+# Usage
+
+Run without sound null safety.
+Instead of `flutter run`
+Use: `flutter run --no-sound-null-safety`
+
 ## Content
 
 This repository contains Section 18 - 21 of Dart & Flutter Course: Performant Data Fetching, Testing with Flutter and Dart, & Offline Data Storage.
@@ -77,5 +83,3 @@ This repository contains Section 18 - 21 of Dart & Flutter Course: Performant Da
 - List Tile Content Padding Property
 - Replacing Placeholder Characters
 - Loading Containers for Comments
-
-Run without sound null safety.
