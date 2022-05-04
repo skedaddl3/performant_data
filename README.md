@@ -1,4 +1,4 @@
-# Usage
+## Usage
 
 Run without sound null safety.
 Instead of `flutter run`
