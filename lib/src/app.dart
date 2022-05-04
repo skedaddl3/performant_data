@@ -33,6 +33,8 @@ class App extends StatelessWidget {
     } else {
       return MaterialPageRoute(
         builder: (context) {
+          // ignore: unnecessary_null_comparison
+          assert(context != null);
           final commentsBloc = CommentsProvider.of(context);
           final itemId = int.parse(settings.name!.replaceFirst('/', ''));
 

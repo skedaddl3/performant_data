@@ -5,17 +5,23 @@ import 'loading_container.dart';
 
 class Comment extends StatelessWidget {
   final int itemId;
-  late Map<int, Future<ItemModel?>>? itemMap;
+  final Map<int, Future<ItemModel?>>? itemMap;
   final int depth;
 
-  Comment({required this.itemId, required this.itemMap, required this.depth});
+  const Comment(
+      {Key? key,
+      required this.itemId,
+      required this.itemMap,
+      required this.depth})
+      : super(key: key);
 
+  @override
   Widget build(context) {
     return FutureBuilder(
       future: itemMap![itemId],
       builder: (context, AsyncSnapshot<ItemModel?> snapshot) {
         if (!snapshot.hasData) {
-          return LoadingContainer();
+          return const LoadingContainer();
         }
 
         final item = snapshot.data;
@@ -31,11 +37,11 @@ class Comment extends StatelessWidget {
           ),
           const Divider(),
         ];
-        item.kids.forEach((kidId) {
+        for (var kidId in item.kids) {
           children.add(
             Comment(itemId: kidId, itemMap: itemMap, depth: depth + 1),
           );
-        });
+        }
 
         return Column(
           children: children,

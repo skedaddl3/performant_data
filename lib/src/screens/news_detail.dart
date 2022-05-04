@@ -7,8 +7,8 @@ import '../widgets/comment.dart';
 class NewsDetail extends StatelessWidget {
   final int itemId;
 
-  // ignore: use_key_in_widget_constructors
-  const NewsDetail({required this.itemId});
+  // ignore: use_key_in_widget_constructors, prefer_const_constructors_in_immutables
+  NewsDetail({required this.itemId});
 
   @override
   Widget build(context) {
@@ -26,8 +26,9 @@ class NewsDetail extends StatelessWidget {
     return StreamBuilder(
       stream: bloc.itemWithComments,
       builder: (context, AsyncSnapshot<Map<int, Future<ItemModel?>>> snapshot) {
-        if (snapshot.hasData) {
-          return const Text('Loading');
+        if (!snapshot.hasData) {
+          // ignore: prefer_const_constructors
+          return Text('Loading');
         }
 
         final itemFuture = snapshot.data![itemId];
@@ -36,7 +37,8 @@ class NewsDetail extends StatelessWidget {
           future: itemFuture,
           builder: (context, AsyncSnapshot<ItemModel?> itemSnapshot) {
             if (!itemSnapshot.hasData) {
-              return const Text('Loading');
+              // ignore: prefer_const_constructors
+              return Text('Loading');
             }
 
             return buildList(itemSnapshot.data, snapshot.data);
